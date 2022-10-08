@@ -26,33 +26,34 @@ namespace _3.Presentation
 
         public void loadData()
         {
-            dtgv_chucvu.ColumnCount = 4;
-            dtgv_chucvu.Columns[0].Name = "Id chức vụ";
-            dtgv_chucvu.Columns[0].Visible = false;
+            dtgv_show.ColumnCount = 3;
+            dtgv_show.Columns[0].Name = "Id";
+            dtgv_show.Columns[0].Visible = false;
 
-            dtgv_chucvu.Columns[1].Name = "Mã chức vụ";
-            dtgv_chucvu.Columns[2].Name = "Tên chức vụ";
+            dtgv_show.Columns[1].Name = "Mã";
+            dtgv_show.Columns[2].Name = "Tên";
 
-            dtgv_chucvu.Rows.Clear();
+            dtgv_show.Rows.Clear();
             var lstChucVu = _quanLyChucVuServices.getChucVusFromDB();
             foreach (var item in lstChucVu)
             {
-                dtgv_chucvu.Rows.Add(item.Id, item.Ma, item.Ten);
+                dtgv_show.Rows.Add(item.Id, item.Ma, item.Ten);
             }
         }
 
-        public void resetTextbox()
+        public void resetForm()
         {
+            loadData();
             _cv = null;
             tb_ma.Text = "";
             tb_ten.Text = "";
         }
 
-        private void dtgv_chucvu_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dtgv_show_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow r = dtgv_chucvu.Rows[e.RowIndex];
+                DataGridViewRow r = dtgv_show.Rows[e.RowIndex];
                 _cv = _quanLyChucVuServices.getChucVusFromDB().FirstOrDefault(x => x.Id == Guid.Parse(r.Cells[0].Value.ToString()));
                 tb_ma.Text = r.Cells[1].Value.ToString();
                 tb_ten.Text = r.Cells[2].Value.ToString();
@@ -79,8 +80,7 @@ namespace _3.Presentation
                 };
                 _quanLyChucVuServices.addChucVu(cv);
                 MessageBox.Show("Thêm chức vụ thành công");
-                loadData();
-                resetTextbox();
+                resetForm();
             }
         }
 
@@ -100,9 +100,8 @@ namespace _3.Presentation
                     _cv.Ma = tb_ma.Text;
                     _cv.Ten = tb_ten.Text;
                     _quanLyChucVuServices.updateChucVu(_cv);
-                    MessageBox.Show("Cập nhật chức vụ thành công");
-                    loadData();
-                    resetTextbox();
+                    MessageBox.Show("Sửa chức vụ thành công");
+                    resetForm();
                 }
                 else
                 {
@@ -121,15 +120,13 @@ namespace _3.Presentation
             {
                 _quanLyChucVuServices.deleteChucVu(_cv);
                 MessageBox.Show("Xóa chức vụ thành công");
-                loadData();
-                resetTextbox();
+                resetForm();
             }
         }
 
         private void btn_reset_Click(object sender, EventArgs e)
         {
-            loadData();
-            resetTextbox();
+            resetForm();
         }
     }
 }

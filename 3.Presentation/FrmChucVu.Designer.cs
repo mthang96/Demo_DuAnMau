@@ -34,7 +34,7 @@
             this.btn_sua = new System.Windows.Forms.Button();
             this.btn_xoa = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dtgv_chucvu = new System.Windows.Forms.DataGridView();
+            this.dtgv_show = new System.Windows.Forms.DataGridView();
             this.btn_reset = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_ma = new System.Windows.Forms.TextBox();
@@ -43,7 +43,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_chucvu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_show)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -104,7 +104,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dtgv_chucvu);
+            this.groupBox3.Controls.Add(this.dtgv_show);
             this.groupBox3.Location = new System.Drawing.Point(12, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1025, 342);
@@ -112,16 +112,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh sách chức vụ";
             // 
-            // dtgv_chucvu
+            // dtgv_show
             // 
-            this.dtgv_chucvu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgv_chucvu.Location = new System.Drawing.Point(17, 61);
-            this.dtgv_chucvu.Name = "dtgv_chucvu";
-            this.dtgv_chucvu.RowHeadersWidth = 51;
-            this.dtgv_chucvu.RowTemplate.Height = 29;
-            this.dtgv_chucvu.Size = new System.Drawing.Size(991, 261);
-            this.dtgv_chucvu.TabIndex = 0;
-            this.dtgv_chucvu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_chucvu_CellClick);
+            this.dtgv_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_show.Location = new System.Drawing.Point(17, 61);
+            this.dtgv_show.Name = "dtgv_show";
+            this.dtgv_show.RowHeadersWidth = 51;
+            this.dtgv_show.RowTemplate.Height = 29;
+            this.dtgv_show.Size = new System.Drawing.Size(991, 261);
+            this.dtgv_show.TabIndex = 0;
+            this.dtgv_show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgv_show_CellClick);
             // 
             // btn_reset
             // 
@@ -179,7 +179,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgv_chucvu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_show)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -197,6 +197,6 @@
         private Label label1;
         private Button btn_reset;
         private GroupBox groupBox3;
-        private DataGridView dtgv_chucvu;
+        private DataGridView dtgv_show;
     }
 }

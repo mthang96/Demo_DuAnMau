@@ -9,8 +9,8 @@ namespace _2.BUS.ViewModels
 {
     public class ViewNhanVien
     {
-        public NhanVien nv { get; set; }
-        public CuaHang ch { get; set; }
-        public ChucVu cv { get; set; }
+        public NhanVien nhanVien { get; set; }
+        public CuaHang cuaHang { get; set; }
+        public ChucVu chucVu { get; set; }
     }
 }

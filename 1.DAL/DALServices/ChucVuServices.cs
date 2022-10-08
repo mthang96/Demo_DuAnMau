@@ -8,39 +8,39 @@ using System.Threading.Tasks;
 
 namespace _1.DAL.DALServices
 {
-    public class CuaHangServices : ICuaHangServices
+    public class ChucVuServices : IChucVuServices
     {
         private FINALASS_FPOLYSHOP_FA22_SOF205__SOF2041Context _DBcontext;
-        private List<CuaHang> _lstCuaHang;
-
-        public CuaHangServices()
+        private List<ChucVu> _lstChucVu;
+        public ChucVuServices()
         {
             _DBcontext = new FINALASS_FPOLYSHOP_FA22_SOF205__SOF2041Context();
-            _lstCuaHang = new List<CuaHang>();
+            _lstChucVu = new List<ChucVu>();
+
         }
-        public bool addCuaHang(CuaHang cuaHang)
+        public bool addChucVu(ChucVu chucVu)
         {
-            _DBcontext.CuaHangs.Add(cuaHang);
+            _DBcontext.ChucVus.Add(chucVu);
             _DBcontext.SaveChanges();
             return true;
         }
 
-        public bool deleteCuaHang(CuaHang cuaHang)
+        public bool deleteChucVu(ChucVu chucVu)
         {
-            _DBcontext.CuaHangs.Remove(cuaHang);
+            _DBcontext.ChucVus.Remove(chucVu);
             _DBcontext.SaveChanges();
             return true;
         }
 
-        public List<CuaHang> getCuaHangsFromDB()
+        public List<ChucVu> getChucVusFromDB()
         {
-            _lstCuaHang = _DBcontext.CuaHangs.ToList();
-            return _lstCuaHang;
+            _lstChucVu = _DBcontext.ChucVus.ToList();
+            return _lstChucVu;
         }
 
-        public bool updateCuaHang(CuaHang cuaHang)
+        public bool updateChucVu(ChucVu chucVu)
         {
-            _DBcontext.CuaHangs.Update(cuaHang);
+            _DBcontext.ChucVus.Update(chucVu);
             _DBcontext.SaveChanges();
             return true;
         }

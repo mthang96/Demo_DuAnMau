@@ -19,15 +19,15 @@ namespace _2.BUS.Services
             _ICuaHangServices = new CuaHangServices();
             _lstCuaHang = new List<CuaHang>();
         }
-        public bool addCuaHang(CuaHang cuahang)
+        public bool addCuaHang(CuaHang cuaHang)
         {
-            _ICuaHangServices.addCuaHang(cuahang);
+            _ICuaHangServices.addCuaHang(cuaHang);
             return true;
         }
 
-        public bool deleteCuaHang(CuaHang cuahang)
+        public bool deleteCuaHang(CuaHang cuaHang)
         {
-            _ICuaHangServices.deleteCuaHang(cuahang);
+            _ICuaHangServices.deleteCuaHang(cuaHang);
             return true;
         }
 
@@ -37,9 +37,9 @@ namespace _2.BUS.Services
             return _lstCuaHang;
         }
 
-        public bool updateCuaHang(CuaHang cuahang)
+        public bool updateCuaHang(CuaHang cuaHang)
         {
-            _ICuaHangServices.updateCuaHang(cuahang);
+            _ICuaHangServices.updateCuaHang(cuaHang);
             return true;
         }
     }

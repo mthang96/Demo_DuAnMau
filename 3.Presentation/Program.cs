@@ -9,7 +9,7 @@ namespace _3.Presentation
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new FrmMain());
         }
     }
 }

@@ -9,9 +9,9 @@ namespace _1.DAL.IDALServices
 {
     public interface ICuaHangServices
     {
-        bool addCuaHang(CuaHang cuahang);
-        bool updateCuaHang(CuaHang cuahang);
-        bool deleteCuaHang(CuaHang cuahang);
+        bool addCuaHang(CuaHang cuaHang);
+        bool updateCuaHang(CuaHang cuaHang);
+        bool deleteCuaHang(CuaHang cuaHang);
         List<CuaHang> getCuaHangsFromDB();
 
     }

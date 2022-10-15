@@ -9,7 +9,7 @@ namespace _3.Presentation
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new FrmMain());
+            Application.Run(new FrmBanHang());
         }
     }
 }

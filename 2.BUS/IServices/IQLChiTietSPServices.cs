@@ -10,10 +10,11 @@ namespace _2.BUS.IServices
 {
     public interface IQLChiTietSPServices
     {
-        bool addChiTietSp(ChiTietSp sp);
-        bool updateChiTietSp(ChiTietSp sp);
-        bool deleteChiTietSp(ChiTietSp sp);
+        bool addChiTietSp(CreatCTSPModel ctsp);
+        bool updateChiTietSp(UpdateCTSPModel ctsp);
+        bool deleteChiTietSp(Guid idctsp);
         List<ViewSanPhamChiTiet> getChiTietSPFromDB();
         List<ChiTietSp> getChiTietSPFromDB1();
+        List<ViewChiTietSanPham> getCTSP();
     }
 }

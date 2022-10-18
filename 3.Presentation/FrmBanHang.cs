@@ -123,6 +123,7 @@ namespace _3.Presentation
         }
         public void addGioHang(Guid id)
         {
+            
             var sp = _iQLChiTietSanPham.getChiTietSPFromDB1().FirstOrDefault(x => x.Id == id);
             var data = _lstGioHang.FirstOrDefault(x => x.IdChiTietSp == id);
             if (data == null)
@@ -166,7 +167,7 @@ namespace _3.Presentation
                     _iQLHoaDonChiTietServices.addHoaDonChiTiet(hdct);
                     var sp = _iQLChiTietSanPham.getChiTietSPFromDB1().FirstOrDefault(x => x.Id == item.IdChiTietSp);
                     sp.SoLuongTon -= item.SoLuong;
-                    _iQLChiTietSanPham.updateChiTietSp(sp);
+                    //_iQLChiTietSanPham.updateChiTietSp(sp);
                 }
                 MessageBox.Show("Tao hoa don thanh cong");
                 _lstGioHang = new List<GioHangChiTiet>();

@@ -15,6 +15,7 @@ namespace _2.BUS.Services
     {
         private IChiTietSPServices _IChiTietSPServices;
         private List<ViewSanPhamChiTiet> _lstChiTietSp;
+        private List<ViewChiTietSanPham> _lstCTSanPham;
         private List<ChiTietSp> _lstChiTietSp1;
         private INSXServices _INSXServices;
         private IDongSPServices _IDongSPServices;
@@ -29,6 +30,7 @@ namespace _2.BUS.Services
             _IMauSacServices = new MauSacServices();
             _ISanPhamServices = new SanPhamServices();
             _lstChiTietSp1 = new List<ChiTietSp>();
+            _lstCTSanPham = new List<ViewChiTietSanPham>();
         }
 
         public List<ViewSanPhamChiTiet> getChiTietSPFromDB()
@@ -48,30 +50,61 @@ namespace _2.BUS.Services
                              }).ToList();
             return _lstChiTietSp;
         }
-
+        public List<ViewChiTietSanPham> getCTSP()
+        {
+            _lstCTSanPham = (from a in _IChiTietSPServices.getChiTietSPFromDB()
+                             join b in _ISanPhamServices.getNhanViensFromDB() on a.IdSp equals b.Id
+                             select new ViewChiTietSanPham
+                             {
+                                 IdCTSP = a.Id,
+                                 TenSP = b.Ten,
+                                 IdSP = a.IdSp,
+                                 Mota = a.MoTa,
+                                 SoLuongTon = a.SoLuongTon,
+                                 GiaNhap = a.GiaNhap,
+                                 GiaBan = a.GiaBan,
+                                 Total = a.SoLuongTon * a.GiaNhap,
+                             }).ToList();
+            return _lstCTSanPham;
+        }
         public List<ChiTietSp> getChiTietSPFromDB1()
         {
             _lstChiTietSp1 = _IChiTietSPServices.getChiTietSPFromDB();
             return _lstChiTietSp1;
         }
-        public bool addChiTietSp(ChiTietSp sp)
+        public bool addChiTietSp(CreatCTSPModel ctsp)
         {
-            _IChiTietSPServices.addSP(sp);
+            ChiTietSp ctsps = new ChiTietSp()
+            {
+                IdSp = ctsp.IdSp,
+                MoTa = ctsp.MoTa,
+                SoLuongTon = ctsp.SoLuongTon,
+                GiaNhap = ctsp.GiaNhap,
+                GiaBan=ctsp.GiaBan,
+            };
+            _IChiTietSPServices.addSP(ctsps);
             return true;
 
 
         }
 
-        public bool deleteChiTietSp(ChiTietSp sp)
+        public bool deleteChiTietSp(Guid idctsp)
         {
-            _IChiTietSPServices.deleteSP(sp);
+            var x = _IChiTietSPServices.getChiTietSPFromDB().FirstOrDefault(p => p.Id == idctsp);
+            _IChiTietSPServices.deleteSP(x);
             return true;
         }
 
 
-        public bool updateChiTietSp(ChiTietSp sp)
+        public bool updateChiTietSp(UpdateCTSPModel ctsp)
         {
-            _IChiTietSPServices.updateSP(sp);
+            var x = _IChiTietSPServices.getChiTietSPFromDB().FirstOrDefault(p => p.Id == ctsp.IdCTSP);
+            x.IdSp = ctsp.IdSp;
+            x.MoTa = ctsp.MoTa;
+            x.SoLuongTon = ctsp.SoLuongTon;
+            x.GiaNhap = ctsp.GiaNhap;
+            x.GiaBan = ctsp.GiaBan;
+            _IChiTietSPServices.updateSP(x);
             return true;
         }
     }
